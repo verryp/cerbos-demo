@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	export let token
+	export let token, quota
 
 	let isAllowedViewRfq = false
 	let actionViewRfq = "rfq.view"
@@ -13,7 +13,8 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': "Bearer " + token  },
                     body: JSON.stringify({
-                        "resources": [actionViewRfq]
+                        "resources": [actionViewRfq],
+						"quota": quota
                     })
                 }
             );

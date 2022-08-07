@@ -7,9 +7,10 @@
 	let loading = false;
   let message
 	let email = "verry.rlldev@gmail.com", password = "password" 
+	let quota = 0 // !NOTE: change on this line to trigger the quota limit
 
 	const handleLogin = async () => {
-    let defToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6bnVsbCwiY2xpZW50X2lkIjoxMTE1MSwidG9rZW5fdmVyc2lvbiI6IjEuMC4wIiwidG9rZW5fdHlwZSI6Imd1ZXN0X3Rva2VuIiwiYXVkIjoiMTAwNSIsImV4cCI6MTY1ODE3NTA5NCwianRpIjoiYTBmMDhmYzQtYjYwOS0zNWJlLTZkMDYtMjJjZGRhMzNhOGY5IiwiaWF0IjoxNjU4MDg4Njk0LCJpc3MiOiIvZXgvdjEvYXV0aG9yaXplIn0.nuv9tx-GyBKdmufZqj1Qxt0-pKlWCPgKgVp67KhUd4g-X9nojTcafc49jzWTLSxHDAGLOpBDMnvhCe6pFBAW9Dm74n3--J9CtTA3_IgYQ8DK6EdT0fqjoMBwZlKfKP9EYRyURcaezvGUY1hUfPK2a7Ccd1fD1ozDlKiI9uaEpns7opw_ULjRn7MEXdgDcOy7gViwZ5BYylsEjxfSi0EpLsGE0pOtmTAq1hqOlnO0_DFvACvlYE6EPTnAjxDO4espCvbC0iuWspQdA6W526dJzzf9S7HBrVZfeHB4NSXjaze9YLBkSnXP1EZTj3IQ6_Umk2jXgWoNWEwxSjGLtlPI6g'
+    let defToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6bnVsbCwiY2xpZW50X2lkIjoxMTE1MSwidG9rZW5fdmVyc2lvbiI6IjEuMC4wIiwidG9rZW5fdHlwZSI6Imd1ZXN0X3Rva2VuIiwiYXVkIjoiMTAwNSIsImV4cCI6MTY1ODQ3NDk2NiwianRpIjoiODM3ZmVlZmYtNWMwOC05MGZiLTA2ZmUtODE0YzI2MTM5ZDg2IiwiaWF0IjoxNjU4Mzg4NTY2LCJpc3MiOiIvZXgvdjEvYXV0aG9yaXplIn0.BGirHa2EPUby9CTvKtneZzY9hmOfq3Che8WKReuccTRwbxAN5bU_p_izLSzprtdNGabpKDFUSrVtrMZPPeME6tlFRKMwx6Fc4nCVYO_kUtYsK7CKb0M6LNjsSC797ZgafGSqMGkf0Be_WCqdfnsQExbxK6Uj-C31QzG41UX5s7IBd1ZlpvjFwu5gnCi_skcRJugIBMx7HO5dZjNTeP7QujlPB6ebbBvs5uDecMdLa0JLBWeR18X6KsYyqIhi-gh4St8CCet96S7MlfRKegu1C52mp-Ldt3i7ElQAd0tkSNbCmPiT_n_aLCXxPhvAMOJrpMYfiqKBqaSr9dvC-kxxFA'
 		try {
 			loading = true;
       const response = await fetch(
@@ -75,7 +76,10 @@
 			</form>
 	</section>
 		{:else}
-			<RFQ {token} />
+			<RFQ
+				token={token}
+				quota={quota }
+			/>
 		{/if}
 	</main>
 </body>

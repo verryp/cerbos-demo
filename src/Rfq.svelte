@@ -2,7 +2,8 @@
     import { onMount } from "svelte";
 	import View from './View.svelte'
 
-    export let token
+    export let token, quota
+
     let actionCreateRfq = "rfq.create"
     let actionListRfq = "rfq.list"
 
@@ -19,7 +20,8 @@
                         "resources": [
                             actionCreateRfq,
                             actionListRfq
-                        ]
+                        ],
+						"quota": quota
                     })
                 }
             );
@@ -40,7 +42,8 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': "Bearer " + token  },
                     body: JSON.stringify({
-                        "resources": [actionCreateRfq]
+                        "resources": [actionCreateRfq],
+						"quota": quota
                     })
                 }
             );
@@ -63,7 +66,10 @@
 </script>
 
 {#if page === 'view'}
-<View {token} />
+<View 
+	token={token} 
+	quota={quota}
+/>
 {:else}
 <section class="text-gray-600 body-font">
     {#if isAllowedCreateRfq}
